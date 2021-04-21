@@ -75,7 +75,8 @@ const {
   GraphQLString, 
   GraphQLNonNull,
   GraphQLSchema,
-  GraphQLList
+  GraphQLList,
+  GraphQLFloat
 } = require('graphql')
 
 const DesertType = new GraphQLObjectType({
@@ -85,7 +86,7 @@ const DesertType = new GraphQLObjectType({
     id: { type: GraphQLNonNull(GraphQLInt) },
     type: { type: GraphQLNonNull(GraphQLString) },
     name: { type: GraphQLNonNull(GraphQLString) },
-    ppu: { type: GraphQLNonNull(GraphQLInt) },
+    ppu: { type: GraphQLNonNull(GraphQLFloat) },
   })
 })
 

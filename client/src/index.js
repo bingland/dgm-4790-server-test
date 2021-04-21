@@ -4,9 +4,22 @@ import './reset.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// appollo provider
+
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client/react'
+import { gql } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:3535/graphql',
+  cache: new InMemoryCache()
+})
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
