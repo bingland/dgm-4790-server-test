@@ -16,3 +16,19 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+button {
+  padding: 10px;
+  background-color: rgb(44, 44, 44);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14x;
+  font-weight: lighter;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+textarea, input, button {
+  font-family: 'Oxygen', sans-serif;
+}

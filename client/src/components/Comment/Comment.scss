@@ -1,4 +1,21 @@
 .Comment {
   background-color: lightgoldenrodyellow;
   border: 1px solid lightgray;
+  padding: 15px;
+  margin: 10px 0;
+
+  h1 {
+    font-size: 20px;
+    padding: 5px 0;
+  }
+  h2 {
+    font-style: italic;
+    padding: 5px 0;
+  }
+  p {
+    padding: 5px 0;
+  }
+  button {
+    margin-top: 10px;
+  }
 }

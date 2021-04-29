@@ -7,9 +7,14 @@
     display: inline;
     text-decoration: underline;
     cursor: pointer;
+    padding: 0 5px;
     
     &:hover {
       color: grey;
     }
+  }
+
+  button {
+    margin-left: 10px;
   }
 }

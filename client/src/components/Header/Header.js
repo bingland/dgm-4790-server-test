@@ -14,7 +14,7 @@ const Header = props => {
       <div className="forumLink" onClick={setPage}>Food</div> | 
       <div className="forumLink" onClick={setPage}>Awww</div> | 
       <div className="forumLink" onClick={setPage}>Programming</div>
-      <button className="newCommentBtn">New Post</button>
+      <button className="newCommentBtn"  onClick={props.toggleNewComment}>New Comment</button>
     </div>
   )
 }

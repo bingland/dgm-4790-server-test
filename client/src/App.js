@@ -12,6 +12,10 @@ const App = () => {
   const [curPage, setCurPage] = useState('Landing')
   const [showNewComment, setShowNewComment] = useState(false)
 
+  const toggleNewComment = () => {
+    setShowNewComment(!showNewComment)
+  }
+
   const GET_DATA = gql`
     query {
       deserts {
@@ -44,10 +48,10 @@ const App = () => {
 
   return (
     <div className="App">
-      { !showNewComment && (
-        <NewComment />
+      { showNewComment && (
+        <NewComment toggleNewComment={toggleNewComment} />
       )}
-      <Header setCurPage={setCurPage} />
+      <Header setCurPage={setCurPage} toggleNewComment={toggleNewComment} />
       <ForumWelcome curPage={curPage} />
       <div className="comments">
         <Comment />
