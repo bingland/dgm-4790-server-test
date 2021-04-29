@@ -6,14 +6,25 @@ import ForumWelcome from './components/ForumWelcome/ForumWelcome'
 import Header from './components/Header/Header'
 import Comment from './components/Comment/Comment'
 import NewComment from './components/NewComment/NewComment'
+import EditArea from './components/EditArea/EditArea'
+import DeleteConfirm from './components/DeleteConfirm/DeleteConfirm'
 
 const App = () => {
 
   const [curPage, setCurPage] = useState('Landing')
+  // modal togglers
   const [showNewComment, setShowNewComment] = useState(false)
+  const [showEditArea, setShowEditArea] = useState(false)
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
 
   const toggleNewComment = () => {
     setShowNewComment(!showNewComment)
+  }
+  const toggleEditArea = () => {
+    setShowEditArea(!showEditArea)
+  }
+  const toggleDeleteConfirm = () => {
+    setShowDeleteConfirm(!showDeleteConfirm)
   }
 
   const GET_DATA = gql`
@@ -51,11 +62,17 @@ const App = () => {
       { showNewComment && (
         <NewComment toggleNewComment={toggleNewComment} />
       )}
-      <Header setCurPage={setCurPage} toggleNewComment={toggleNewComment} />
+      { showEditArea && (
+        <EditArea toggleEditArea={toggleEditArea} />
+      )}
+      { showDeleteConfirm && (
+        <DeleteConfirm toggleDeleteConfirm={toggleDeleteConfirm} />
+      )}
+      <Header setCurPage={setCurPage} toggleNewComment={toggleNewComment}/>
       <ForumWelcome curPage={curPage} />
       <div className="comments">
-        <Comment />
-        <Comment />
+        <Comment toggleEditArea={toggleEditArea} toggleDeleteConfirm={toggleDeleteConfirm} />
+        <Comment toggleEditArea={toggleEditArea} toggleDeleteConfirm={toggleDeleteConfirm} />
       </div>
     </div>
   )
