@@ -1,6 +1,13 @@
 .App {
   font-family: 'Oxygen', sans-serif;
   font-weight: lighter;
+  height: 100%;
+  width: 100%;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
 }
 
 html {

@@ -5,10 +5,12 @@ import { useQuery, gql } from '@apollo/client';
 import ForumWelcome from './components/ForumWelcome/ForumWelcome'
 import Header from './components/Header/Header'
 import Comment from './components/Comment/Comment'
+import NewComment from './components/NewComment/NewComment'
 
 const App = () => {
 
   const [curPage, setCurPage] = useState('Landing')
+  const [showNewComment, setShowNewComment] = useState(false)
 
   const GET_DATA = gql`
     query {
@@ -42,9 +44,11 @@ const App = () => {
 
   return (
     <div className="App">
+      { !showNewComment && (
+        <NewComment />
+      )}
       <Header setCurPage={setCurPage} />
-      {curPage}
-      <ForumWelcome />
+      <ForumWelcome curPage={curPage} />
       <div className="comments">
         <Comment />
         <Comment />

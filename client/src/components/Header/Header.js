@@ -9,11 +9,12 @@ const Header = props => {
 
   return (
     <div className="Header">
-      Forum site. Forums: 
+      Forum site. Forums:
       <div className="forumLink" onClick={setPage}>Funny</div> | 
       <div className="forumLink" onClick={setPage}>Food</div> | 
       <div className="forumLink" onClick={setPage}>Awww</div> | 
       <div className="forumLink" onClick={setPage}>Programming</div>
+      <button className="newCommentBtn">New Post</button>
     </div>
   )
 }
