@@ -1,7 +1,14 @@
 import './App.scss';
+import { useState } from 'react'
 import { useQuery, gql } from '@apollo/client';
 
+import ForumWelcome from './components/ForumWelcome/ForumWelcome'
+import Header from './components/Header/Header'
+import Comment from './components/Comment/Comment'
+
 const App = () => {
+
+  const [curPage, setCurPage] = useState('Landing')
 
   const GET_DATA = gql`
     query {
@@ -35,7 +42,13 @@ const App = () => {
 
   return (
     <div className="App">
-      { <GetData /> }
+      <Header setCurPage={setCurPage} />
+      {curPage}
+      <ForumWelcome />
+      <div className="comments">
+        <Comment />
+        <Comment />
+      </div>
     </div>
   )
 }

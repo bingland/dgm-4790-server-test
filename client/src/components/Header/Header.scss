@@ -1,0 +1,13 @@
+.Header {
+  background-color: pink;
+
+  .forumLink {
+    display: inline;
+    text-decoration: underline;
+    cursor: pointer;
+    
+    &:hover {
+      color: grey;
+    }
+  }
+}
