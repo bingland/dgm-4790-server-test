@@ -35,12 +35,14 @@ const App = () => {
           title
           date 
           body
+          forum
         }
       } 
     }
   `
 
   const GetForumData = () => {
+    console.log('GetForumData')
     const { loading, error, data } = useQuery(GET_FORUM_DATA, {
       variables: {
         "id": curId
@@ -49,6 +51,7 @@ const App = () => {
 
     if (loading) return <p>Loading...</p>
     if (error) return <p>Error :(</p>
+    console.log(data.forum[0])
     let forum = data.forum[0]
 
     return (

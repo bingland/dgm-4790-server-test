@@ -32,6 +32,18 @@
       min-height: 100px;
     }
 
+    p {
+      margin-top: 5px;
+    }
+
+    select {
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid rgb(221, 221, 221);
+      margin-top: 5px;
+      display: block;
+    }
+
     button {
       margin-top: 5px;
     }
