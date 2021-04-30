@@ -11,7 +11,6 @@ import DeleteConfirm from './components/DeleteConfirm/DeleteConfirm'
 
 const App = () => {
 
-  const [curPage, setCurPage] = useState('Landing')
   const [curId, setCurId] = useState('0000')
   // modal togglers
   const [showNewComment, setShowNewComment] = useState(false)
@@ -27,7 +26,7 @@ const App = () => {
 
   const GET_FORUM_DATA = gql`
     query ($id: String) {
-      forums(id: $id) {
+      forum(id: $id) {
         id
         name
         description
@@ -48,14 +47,13 @@ const App = () => {
       }
     })
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error :(</p>;
-
-    let forum = data.forums[0]
+    if (loading) return <p>Loading...</p>
+    if (error) return <p>Error :(</p>
+    let forum = data.forum[0]
 
     return (
       <React.Fragment>
-        <ForumWelcome curPage={curPage} name={forum.name} description={forum.description} />
+        <ForumWelcome name={forum.name} description={forum.description} />
         <div className="comments">
           {forum.comments.map((comment, index) => (
             <Comment 
@@ -90,7 +88,7 @@ const App = () => {
         <DeleteConfirm toggleDeleteConfirm={toggleDeleteConfirm} />
       )}
 
-      <Header setCurPage={setCurPage} toggleNewComment={toggleNewComment}/>
+      <Header setCurId={setCurId} toggleNewComment={toggleNewComment}/>
       <GetForumData/>
     </div>
   )

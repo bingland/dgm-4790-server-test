@@ -36,8 +36,23 @@ let forumData = [
 				"body": "I'm not sure what to put in the body for this comment but the food looks delicious.",
 			}
 		]
-	}
+	},
+	{
+		"id": "0002",
+		"name": "Awww",
+		"description": "Welcome to Awww! Find the cutest images that will make you say \"awwwww\"",
+		"comments": []
+	},
+	{
+		"id": "0003",
+		"name": "Programming",
+		"description": "Welcome to Programming! Connect with other programmers about anything.",
+		"comments": []
+	},
 ]
+
+// Ideas for Forums
+// Funny, Food, Aww, Programming
 
 const {
   GraphQLObjectType, 
@@ -75,16 +90,23 @@ const RootQuery = new GraphQLObjectType({
   name: 'Query', 
   description: 'Root Query',
   fields: () => ({
-    forums: {
+    forum: {
       type: new GraphQLList(ForumType),
-      description: 'List of forums',
+      description: 'A single forum',
 			args: {
 				id: { type: GraphQLString}
 			},
       resolve: (parent, args) => [forumData.find(forum => forum.id === args.id)]
+    },
+		forums: {
+      type: new GraphQLList(ForumType),
+      description: 'List of forums',
+      resolve: () => forumData
     }
   })
 })
+
+
 
 module.exports = new GraphQLSchema({
   query: RootQuery

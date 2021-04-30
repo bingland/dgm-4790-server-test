@@ -4,8 +4,8 @@ const ForumWelcome = props => {
 
   return (
     <div className="ForumWelcome">
-      <h1 className="forumName">{props.curPage}</h1>
-      <p>Welcome to the {props.curPage} forum! Description</p>
+      <h1 className="forumName">{props.name}</h1>
+      <p>{props.description}</p>
     </div>
   )
 }
