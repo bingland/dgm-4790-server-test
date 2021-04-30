@@ -1,5 +1,5 @@
 import './App.scss';
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useQuery, gql } from '@apollo/client';
 
 import ForumWelcome from './components/ForumWelcome/ForumWelcome'
@@ -12,49 +12,64 @@ import DeleteConfirm from './components/DeleteConfirm/DeleteConfirm'
 const App = () => {
 
   const [curPage, setCurPage] = useState('Landing')
+  const [curId, setCurId] = useState('0000')
   // modal togglers
   const [showNewComment, setShowNewComment] = useState(false)
   const [showEditArea, setShowEditArea] = useState(false)
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
+  // current selected state
+  const [currentTitle, setCurrentTitle] = useState('')
+  const [currentBody, setCurrentBody] = useState('')
 
-  const toggleNewComment = () => {
-    setShowNewComment(!showNewComment)
-  }
-  const toggleEditArea = () => {
-    setShowEditArea(!showEditArea)
-  }
-  const toggleDeleteConfirm = () => {
-    setShowDeleteConfirm(!showDeleteConfirm)
-  }
+  const toggleNewComment = () => { setShowNewComment(!showNewComment) }
+  const toggleEditArea = () => { setShowEditArea(!showEditArea) }
+  const toggleDeleteConfirm = () => { setShowDeleteConfirm(!showDeleteConfirm) }
 
-  const GET_DATA = gql`
-    query {
-      deserts {
+  const GET_FORUM_DATA = gql`
+    query ($id: String) {
+      forums(id: $id) {
         id
-        type
         name
-        ppu
-      }
+        description
+        comments {
+          id
+          title
+          date 
+          body
+        }
+      } 
     }
   `
 
-  const GetData = () => {
-    const { loading, error, data } = useQuery(GET_DATA)
+  const GetForumData = () => {
+    const { loading, error, data } = useQuery(GET_FORUM_DATA, {
+      variables: {
+        "id": curId
+      }
+    })
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
 
-    console.log(data)
+    let forum = data.forums[0]
 
-    return data.deserts.map(({ id, type, name, ppu }) => (
-      <div key={id}>
-        <p>
-          Type: {type}
-          Name: {name}
-          PPU: {ppu}
-        </p>
-      </div>
-    ))
+    return (
+      <React.Fragment>
+        <ForumWelcome curPage={curPage} name={forum.name} description={forum.description} />
+        <div className="comments">
+          {forum.comments.map((comment, index) => (
+            <Comment 
+              key={index}
+              toggleEditArea={toggleEditArea} 
+              toggleDeleteConfirm={toggleDeleteConfirm} 
+              comment={comment} 
+              setCurrentTitle={setCurrentTitle}
+              setCurrentBody={setCurrentBody}
+            />
+          ))}
+        </div>
+      </React.Fragment>
+    )
   }
 
   return (
@@ -63,17 +78,20 @@ const App = () => {
         <NewComment toggleNewComment={toggleNewComment} />
       )}
       { showEditArea && (
-        <EditArea toggleEditArea={toggleEditArea} />
+        <EditArea 
+          toggleEditArea={toggleEditArea} 
+          currentTitle={currentTitle}
+          currentBody={currentBody}
+          setCurrentTitle={setCurrentTitle}
+          setCurrentBody={setCurrentBody}
+        />
       )}
       { showDeleteConfirm && (
         <DeleteConfirm toggleDeleteConfirm={toggleDeleteConfirm} />
       )}
+
       <Header setCurPage={setCurPage} toggleNewComment={toggleNewComment}/>
-      <ForumWelcome curPage={curPage} />
-      <div className="comments">
-        <Comment toggleEditArea={toggleEditArea} toggleDeleteConfirm={toggleDeleteConfirm} />
-        <Comment toggleEditArea={toggleEditArea} toggleDeleteConfirm={toggleDeleteConfirm} />
-      </div>
+      <GetForumData/>
     </div>
   )
 }

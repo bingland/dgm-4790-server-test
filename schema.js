@@ -1,71 +1,41 @@
-let sampleData = [
+let forumData = [
+	{
+		"id": "0000",
+		"name": "Funny",
+		"description": "Welcome to the Funny forum! Here you'll find all sort of really funny things, like memes.",
+		"comments": [
+			{
+				"id": "0000",
+				"title": "Hi i'm a comment",
+				"date": "12:30 pm 1/3/2021",
+				"body": "Wow this forum is really really cool!!!! I can leave comments here.",
+			},
+			{
+				"id": "0001",
+				"title": "Hi i'm another comment",
+				"date": "2:30 am 2/5/2021",
+				"body": "I'm not sure what to put in the body for this comment but it's cool.",
+			}
+		]
+	},
 	{
 		"id": "0001",
-		"type": "donut",
-		"name": "Cake",
-		"ppu": 0.55,
-		"batters":
+		"name": "Food",
+		"description": "Welcome to the Food forum! Here you'll find all sort of delicious foods and recipes.",
+		"comments": [
 			{
-				"batter":
-					[
-						{ "id": "1001", "type": "Regular" },
-						{ "id": "1002", "type": "Chocolate" },
-						{ "id": "1003", "type": "Blueberry" },
-						{ "id": "1004", "type": "Devil's Food" }
-					]
+				"id": "0002",
+				"title": "Wow I love this recipe",
+				"date": "3:30 pm 3/3/2021",
+				"body": "Wow this forum is really really cool!!!! I can leave comments here.",
 			},
-		"topping":
-			[
-				{ "id": "5001", "type": "None" },
-				{ "id": "5002", "type": "Glazed" },
-				{ "id": "5005", "type": "Sugar" },
-				{ "id": "5007", "type": "Powdered Sugar" },
-				{ "id": "5006", "type": "Chocolate with Sprinkles" },
-				{ "id": "5003", "type": "Chocolate" },
-				{ "id": "5004", "type": "Maple" }
-			]
-	},
-	{
-		"id": "0002",
-		"type": "donut",
-		"name": "Raised",
-		"ppu": 0.55,
-		"batters":
 			{
-				"batter":
-					[
-						{ "id": "1001", "type": "Regular" }
-					]
-			},
-		"topping":
-			[
-				{ "id": "5001", "type": "None" },
-				{ "id": "5002", "type": "Glazed" },
-				{ "id": "5005", "type": "Sugar" },
-				{ "id": "5003", "type": "Chocolate" },
-				{ "id": "5004", "type": "Maple" }
-			]
-	},
-	{
-		"id": "0003",
-		"type": "donut",
-		"name": "Old Fashioned",
-		"ppu": 0.55,
-		"batters":
-			{
-				"batter":
-					[
-						{ "id": "1001", "type": "Regular" },
-						{ "id": "1002", "type": "Chocolate" }
-					]
-			},
-		"topping":
-			[
-				{ "id": "5001", "type": "None" },
-				{ "id": "5002", "type": "Glazed" },
-				{ "id": "5003", "type": "Chocolate" },
-				{ "id": "5004", "type": "Maple" }
-			]
+				"id": "0003",
+				"title": "This food looks really yummy!",
+				"date": "5:30 am 2/15/2021",
+				"body": "I'm not sure what to put in the body for this comment but the food looks delicious.",
+			}
+		]
 	}
 ]
 
@@ -79,14 +49,25 @@ const {
   GraphQLFloat
 } = require('graphql')
 
-const DesertType = new GraphQLObjectType({
-  name: 'Desert',
-  description: 'This represents a desert',
+const CommentType = new GraphQLObjectType({
+  name: 'Comment',
+  description: 'This represents a comment',
   fields: () => ({
-    id: { type: GraphQLNonNull(GraphQLInt) },
-    type: { type: GraphQLNonNull(GraphQLString) },
+    id: { type: GraphQLNonNull(GraphQLString) },
+    title: { type: GraphQLNonNull(GraphQLString) },
+    date: { type: GraphQLNonNull(GraphQLString) },
+    body: { type: GraphQLNonNull(GraphQLString) },
+  })
+})
+
+const ForumType = new GraphQLObjectType({
+  name: 'Forum',
+  description: 'This represents a forum',
+  fields: () => ({
+    id: { type: GraphQLNonNull(GraphQLString) },
     name: { type: GraphQLNonNull(GraphQLString) },
-    ppu: { type: GraphQLNonNull(GraphQLFloat) },
+    description: { type: GraphQLNonNull(GraphQLString) },
+		comments: {	type: new GraphQLList(CommentType) }
   })
 })
 
@@ -94,10 +75,13 @@ const RootQuery = new GraphQLObjectType({
   name: 'Query', 
   description: 'Root Query',
   fields: () => ({
-    deserts: {
-      type: new GraphQLList(DesertType),
-      description: 'List of deserts',
-      resolve: () => sampleData
+    forums: {
+      type: new GraphQLList(ForumType),
+      description: 'List of forums',
+			args: {
+				id: { type: GraphQLString}
+			},
+      resolve: (parent, args) => [forumData.find(forum => forum.id === args.id)]
     }
   })
 })

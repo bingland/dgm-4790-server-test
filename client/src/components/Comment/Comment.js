@@ -4,10 +4,14 @@ const Comment = props => {
 
   return (
     <div className="Comment">
-      <h1>Hi i'm a comment</h1>
-      <h2>38205273952035 - 12:30pm 1/3/2021</h2>
-      <p>Wow this forum is really really cool!!!! I can leave comments here.</p>
-      <button onClick={props.toggleEditArea}>Edit</button>
+      <h1>{props.comment.title}</h1>
+      <h2>{props.comment.id} - {props.comment.date}</h2>
+      <p>{props.comment.body}</p>
+      <button onClick={() => {
+        props.toggleEditArea()
+        props.setCurrentTitle(props.comment.title)
+        props.setCurrentBody(props.comment.body)
+      }}>Edit</button>
       <button onClick={props.toggleDeleteConfirm}>Delete</button>
     </div>
   )
