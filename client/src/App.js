@@ -19,9 +19,13 @@ const App = () => {
   // current selected state
   const [currentTitle, setCurrentTitle] = useState('')
   const [currentBody, setCurrentBody] = useState('')
+  const [currentCommentId, setCurrentCommentId] = useState('')
 
   const toggleNewComment = () => { setShowNewComment(!showNewComment) }
-  const toggleEditArea = () => { setShowEditArea(!showEditArea) }
+  const toggleEditArea = () => { 
+    setShowEditArea(!showEditArea) 
+    setCurrentCommentId()
+  }
   const toggleDeleteConfirm = () => { setShowDeleteConfirm(!showDeleteConfirm) }
 
   const GET_FORUM_DATA = gql`
@@ -66,6 +70,8 @@ const App = () => {
               comment={comment} 
               setCurrentTitle={setCurrentTitle}
               setCurrentBody={setCurrentBody}
+              currentCommentId={currentCommentId}
+              setCurrentCommentId={setCurrentCommentId}
             />
           ))}
         </div>
@@ -85,6 +91,7 @@ const App = () => {
           currentBody={currentBody}
           setCurrentTitle={setCurrentTitle}
           setCurrentBody={setCurrentBody}
+          currentCommentId={currentCommentId}
         />
       )}
       { showDeleteConfirm && (

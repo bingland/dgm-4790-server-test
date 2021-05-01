@@ -113,6 +113,31 @@ const RootMutationType = new GraphQLObjectType({
 				forumData[forumData.findIndex(forum => forum.id === args.forum)].comments.push(comment)
 				return comment
 			}
+		},
+		editComment: {
+			type: CommentType,
+			description: 'Edit a comment',
+			args: {
+				id: { type: GraphQLNonNull(GraphQLString) },
+				title: { type: GraphQLNonNull(GraphQLString) },
+				body: { type: GraphQLNonNull(GraphQLString) }
+			},
+			resolve: (parent, args) => {
+				const forumIndex = forumData.findIndex(forum => {
+					for (let comment of forum.comments) {
+						if (comment.id === args.id) {
+							return true
+						}
+					}
+					return false
+				})
+				
+				const commentIndex = forumData[forumIndex].comments.findIndex(comment => comment.id === args.id)
+				const prevComment = forumData[forumIndex].comments[commentIndex]
+				const comment = { id: args.id, date: prevComment.date, title: args.title, body: args.body, forum: prevComment.forum }
+				forumData[forumIndex].comments[commentIndex] = comment
+				return comment
+			}
 		}
 	})
 })

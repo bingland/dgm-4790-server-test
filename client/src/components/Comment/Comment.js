@@ -11,6 +11,7 @@ const Comment = props => {
         props.toggleEditArea()
         props.setCurrentTitle(props.comment.title)
         props.setCurrentBody(props.comment.body)
+        props.setCurrentCommentId(props.comment.id)
       }}>Edit</button>
       <button onClick={props.toggleDeleteConfirm}>Delete</button>
     </div>
