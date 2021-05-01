@@ -95,7 +95,10 @@ const App = () => {
         />
       )}
       { showDeleteConfirm && (
-        <DeleteConfirm toggleDeleteConfirm={toggleDeleteConfirm} />
+        <DeleteConfirm 
+          toggleDeleteConfirm={toggleDeleteConfirm} 
+          currentCommentId={currentCommentId}
+        />
       )}
 
       <Header setCurId={setCurId} toggleNewComment={toggleNewComment}/>

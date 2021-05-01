@@ -13,7 +13,10 @@ const Comment = props => {
         props.setCurrentBody(props.comment.body)
         props.setCurrentCommentId(props.comment.id)
       }}>Edit</button>
-      <button onClick={props.toggleDeleteConfirm}>Delete</button>
+      <button onClick={() => {
+        props.toggleDeleteConfirm()
+        props.setCurrentCommentId(props.comment.id)
+      }}>Delete</button>
     </div>
   )
 }

@@ -1,12 +1,49 @@
 import './DeleteConfirm.scss'
+import { useQuery, gql, useMutation } from '@apollo/client'
 
 const DeleteConfirm = props => {
+
+  const DELETE_COMMENT = gql`
+    mutation ($id:String!) {
+      deleteComment(id:$id) {
+        id
+        name
+        description
+        comments {
+          id
+          title
+          date 
+          body
+          forum
+        }
+      }
+    }
+  `
+
+  const DeleteComment = () => {
+    const [deleteComment] = useMutation(DELETE_COMMENT, {
+      onCompleted ({deleteComment}) {
+        console.log(deleteComment)
+      }
+    })
+
+    return (
+      <button onClick={() => {
+        deleteComment({ 
+          variables: {
+            id: props.currentCommentId
+          } 
+        })
+        props.toggleDeleteConfirm()
+      }}>Submit</button>
+    )
+  }
 
   return (
     <div className="deleteConfirmBackground">
       <div className="DeleteConfirm">
         <h1>Delete comment?</h1>
-        <button onClick={props.toggleDeleteConfirm}>Close</button>
+        <DeleteComment />
         <button onClick={props.toggleDeleteConfirm}>Cancel</button>
       </div>
     </div>

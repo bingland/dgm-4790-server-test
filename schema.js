@@ -59,6 +59,24 @@ let forumData = [
 	},
 ]
 
+const getCommentIndexes = (id) => {
+	const forumIndex = forumData.findIndex(forum => {
+		for (let comment of forum.comments) {
+			if (comment.id === id) {
+				return true
+			}
+		}
+		return false
+	})
+
+	const commentIndex = forumData[forumIndex].comments.findIndex(comment => comment.id === id)
+
+	return {
+		forumIndex: forumIndex,
+		commentIndex: commentIndex
+	}
+}
+
 // Ideas for Forums
 // Funny, Food, Aww, Programming
 
@@ -123,20 +141,24 @@ const RootMutationType = new GraphQLObjectType({
 				body: { type: GraphQLNonNull(GraphQLString) }
 			},
 			resolve: (parent, args) => {
-				const forumIndex = forumData.findIndex(forum => {
-					for (let comment of forum.comments) {
-						if (comment.id === args.id) {
-							return true
-						}
-					}
-					return false
-				})
-				
-				const commentIndex = forumData[forumIndex].comments.findIndex(comment => comment.id === args.id)
+				const {forumIndex, commentIndex} = getCommentIndexes(args.id)
+
 				const prevComment = forumData[forumIndex].comments[commentIndex]
 				const comment = { id: args.id, date: prevComment.date, title: args.title, body: args.body, forum: prevComment.forum }
 				forumData[forumIndex].comments[commentIndex] = comment
 				return comment
+			}
+		},
+		deleteComment: {
+			type: ForumType,
+			description: 'Delete a comment',
+			args: {
+				id: { type: GraphQLNonNull(GraphQLString) }
+			},
+			resolve: (parent, args) => {
+				let {forumIndex, commentIndex} = getCommentIndexes(args.id)
+				forumData[forumIndex].comments.splice(commentIndex, 1)
+				return forumData[forumIndex]
 			}
 		}
 	})
