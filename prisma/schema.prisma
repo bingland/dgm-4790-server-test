@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model CommentType {
+  id      Int         @default(autoincrement()) @id
+  title   String
+  date    DateTime    @default(now())
+  body    String
+  forumId Int
+  forum    ForumType  @relation(fields: [forumId], references: [id])
+}
+
+model ForumType {
+  id          Int             @default(autoincrement()) @id
+  name        String
+  description String
+  comments    CommentType[]
+}
