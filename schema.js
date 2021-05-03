@@ -87,7 +87,8 @@ const {
   GraphQLNonNull,
   GraphQLSchema,
   GraphQLList,
-  GraphQLFloat
+  GraphQLFloat,
+	GraphQLScalarType
 } = require('graphql')
 
 const CommentType = new GraphQLObjectType({
@@ -180,10 +181,22 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(ForumType),
       description: 'List of forums',
       resolve: () => forumData
-    }
+    },
+		comment: {
+			type: new GraphQLNonNull(CommentType),
+			description: 'A single comment',
+			args: {
+				id: { type: GraphQLString }
+			},
+			resolve: (parents, args) => {
+				let { forumIndex, commentIndex } = getCommentIndexes(args.id)
+				console.log(`${forumIndex} - ${commentIndex}`)
+				console.log(forumData[forumIndex].comments[commentIndex])
+				return forumData[forumIndex].comments[commentIndex]
+			}
+		}
   })
 })
-
 
 
 module.exports = new GraphQLSchema({
