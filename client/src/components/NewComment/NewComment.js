@@ -86,7 +86,7 @@ const NewComment = props => {
         <textarea placeholder="Comment here..." onChange={handleBody} value={body} /><br />
         <p>Select a forum:</p>
         <select className="selectedForum" onChange={handleForum} value={forum} >
-          <option value="prompt" disabled selected>Select Forum</option>
+          <option value="prompt" disabled>Select Forum</option>
           <GetForumOptions />
         </select>
         <PostComment />

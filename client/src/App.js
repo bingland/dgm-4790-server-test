@@ -1,5 +1,5 @@
 import './App.scss';
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useQuery, gql } from '@apollo/client';
 
 import ForumWelcome from './components/ForumWelcome/ForumWelcome'
@@ -21,6 +21,7 @@ const App = () => {
   const [currentBody, setCurrentBody] = useState('')
   const [currentCommentId, setCurrentCommentId] = useState('')
 
+  // togglers
   const toggleNewComment = () => { setShowNewComment(!showNewComment) }
   const toggleEditArea = () => { 
     setShowEditArea(!showEditArea) 

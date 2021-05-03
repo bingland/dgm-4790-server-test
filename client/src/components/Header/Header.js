@@ -1,7 +1,6 @@
 import './Header.scss'
 import { useQuery, gql } from '@apollo/client'
 import React from 'react'
-import { customRandom } from 'nanoid'
 
 const Header = props => {
 

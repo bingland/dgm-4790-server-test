@@ -8,16 +8,16 @@ let forumData = [
 		"comments": [
 			{
 				"id": "P5MUajqfoZh-mlFwsSqLy",
-				"title": "Hi i'm a comment",
+				"title": "Wow this food looks really yummy",
 				"date": "1620011968641",
-				"body": "Wow this forum is really really cool!!!! I can leave comments here.",
+				"body": "Id interdum velit laoreet id donec ultrices tincidunt. Enim lobortis scelerisque fermentum dui faucibus in. Nibh ipsum consequat nisl vel pretium lectus. Nec ullamcorper sit amet risus nullam eget felis eget nunc. Ipsum suspendisse ultrices gravida dictum fusce ut placerat orci. Posuere lorem ipsum dolor sit amet consectetur adipiscing elit duis. Lobortis mattis aliquam faucibus purus in. Justo donec enim diam vulputate ut pharetra sit. Tempus quam pellentesque nec nam aliquam sem et. Cursus risus at ultrices mi. Dictum sit amet justo donec enim diam.",
 				"forum": "S90ovVFpkAmfgKZLG-PIW"
 			},
 			{
 				"id": "Kmei7pY4IRqqbu9RRD053",
-				"title": "Hi i'm another comment",
+				"title": "Look at this cool recipe I found!",
 				"date": "1620011968641",
-				"body": "I'm not sure what to put in the body for this comment but it's cool.",
+				"body": "Sed enim ut sem viverra aliquet. In nibh mauris cursus mattis molestie a iaculis at erat. Placerat vestibulum lectus mauris ultrices eros. Quam viverra orci sagittis eu volutpat odio facilisis mauris sit. Proin libero nunc consequat interdum varius sit amet. Ullamcorper morbi tincidunt ornare massa eget egestas. Porta lorem mollis aliquam ut porttitor leo a diam sollicitudin. Enim tortor at auctor urna nunc id. Iaculis nunc sed augue lacus viverra vitae. Erat pellentesque adipiscing commodo elit at imperdiet. Integer malesuada nunc vel risus commodo viverra maecenas. Eget arcu dictum varius duis at consectetur lorem donec. Vel quam elementum pulvinar etiam non quam. Aliquam sem fringilla ut morbi tincidunt. Adipiscing diam donec adipiscing tristique risus nec feugiat. Enim lobortis scelerisque fermentum dui faucibus in ornare.",
 				"forum": "S90ovVFpkAmfgKZLG-PIW"
 			}
 		]
@@ -31,14 +31,14 @@ let forumData = [
 				"id": "1flRDDY5zj91FrWJGyUF7",
 				"title": "Wow I love this recipe",
 				"date": "1620011968641",
-				"body": "Wow this forum is really really cool!!!! I can leave comments here.",
+				"body": "Mauris rhoncus aenean vel elit. Ac placerat vestibulum lectus mauris ultrices eros in cursus. Mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor. Egestas dui id ornare arcu odio ut. Augue mauris augue neque gravida in. Nulla pellentesque dignissim enim sit. Sagittis aliquam malesuada bibendum arcu vitae elementum curabitur. Ultrices dui sapien eget mi proin sed libero enim sed. Maecenas ultricies mi eget mauris pharetra et ultrices. In massa tempor nec feugiat nisl pretium fusce id. Placerat orci nulla pellentesque dignissim enim sit amet.",
 				"forum": "h2qSU2E33-S8uth6jiitn"
 			},
 			{
 				"id": "s3ffePJWW6hIXac3ilV6",
 				"title": "This food looks really yummy!",
 				"date": "1620011968641",
-				"body": "I'm not sure what to put in the body for this comment but the food looks delicious.",
+				"body": "In egestas erat imperdiet sed euismod nisi. Aliquam eleifend mi in nulla posuere. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Nunc lobortis mattis aliquam faucibus purus in massa tempor. Cursus euismod quis viverra nibh cras pulvinar mattis. Habitant morbi tristique senectus et. Imperdiet nulla malesuada pellentesque elit eget gravida cum. Vestibulum lorem sed risus ultricies. Mauris augue neque gravida in fermentum et sollicitudin. Urna nunc id cursus metus aliquam eleifend mi in nulla. Risus sed vulputate odio ut enim blandit volutpat maecenas volutpat. Ornare arcu odio ut sem nulla pharetra diam. Eget velit aliquet sagittis id consectetur purus ut. Ultrices sagittis orci a scelerisque purus semper eget duis at.",
 				"forum": "h2qSU2E33-S8uth6jiitn"
 			}
 		]
