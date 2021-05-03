@@ -36,11 +36,13 @@ const Header = props => {
 
   return (
     <div className="Header">
-      <div className="alignLeft">
-        <div className="logoText">Forum Site</div>
-        <GetForums />
+      <div className="wrapper">
+        <div className="alignLeft">
+          <div className="logoText">Forum Site</div>
+          <GetForums />
+        </div>
+        <button className="newCommentBtn"  onClick={props.toggleNewComment}>New Comment</button>
       </div>
-      <button className="newCommentBtn"  onClick={props.toggleNewComment}>New Comment</button>
     </div>
   )
 }

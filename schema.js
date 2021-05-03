@@ -2,60 +2,58 @@ const { nanoid } = require('nanoid')
 
 let forumData = [
 	{
-		"id": "0000",
+		"id": "S90ovVFpkAmfgKZLG-PIW",
 		"name": "Funny",
 		"description": "Welcome to the Funny forum! Here you'll find all sort of really funny things, like memes.",
 		"comments": [
 			{
-				"id": "0000",
+				"id": "P5MUajqfoZh-mlFwsSqLy",
 				"title": "Hi i'm a comment",
-				"date": "12:30 pm 1/3/2021",
+				"date": "1620011968641",
 				"body": "Wow this forum is really really cool!!!! I can leave comments here.",
-				"forum": "0000"
+				"forum": "S90ovVFpkAmfgKZLG-PIW"
 			},
 			{
-				"id": "0001",
+				"id": "Kmei7pY4IRqqbu9RRD053",
 				"title": "Hi i'm another comment",
-				"date": "2:30 am 2/5/2021",
+				"date": "1620011968641",
 				"body": "I'm not sure what to put in the body for this comment but it's cool.",
-				"forum": "0000"
+				"forum": "S90ovVFpkAmfgKZLG-PIW"
 			}
 		]
 	},
 	{
-		"id": "0001",
+		"id": "h2qSU2E33-S8uth6jiitn",
 		"name": "Food",
 		"description": "Welcome to the Food forum! Here you'll find all sort of delicious foods and recipes.",
 		"comments": [
 			{
-				"id": "0002",
+				"id": "1flRDDY5zj91FrWJGyUF7",
 				"title": "Wow I love this recipe",
-				"date": "3:30 pm 3/3/2021",
+				"date": "1620011968641",
 				"body": "Wow this forum is really really cool!!!! I can leave comments here.",
-				"forum": "0001"
+				"forum": "h2qSU2E33-S8uth6jiitn"
 			},
 			{
-				"id": "0003",
+				"id": "s3ffePJWW6hIXac3ilV6",
 				"title": "This food looks really yummy!",
-				"date": "5:30 am 2/15/2021",
+				"date": "1620011968641",
 				"body": "I'm not sure what to put in the body for this comment but the food looks delicious.",
-				"forum": "0001"
+				"forum": "h2qSU2E33-S8uth6jiitn"
 			}
 		]
 	},
 	{
-		"id": "0002",
+		"id": "CMRZJwTg8jrdHvClVqvep",
 		"name": "Awww",
-		"description": "Welcome to Awww! Find the cutest images that will make you say \"awwwww\"",
+		"description": "Welcome to Awww! Find the cutest images that will make you say \"awwwww\"!",
 		"comments": [],
-		"forum": "0002"
 	},
 	{
-		"id": "0003",
+		"id": "bgdiBiWzC4N8iO8DhIhR4",
 		"name": "Programming",
 		"description": "Welcome to Programming! Connect with other programmers about anything.",
 		"comments": [],
-		"forum": "0003"
 	},
 ]
 
@@ -190,8 +188,6 @@ const RootQuery = new GraphQLObjectType({
 			},
 			resolve: (parents, args) => {
 				let { forumIndex, commentIndex } = getCommentIndexes(args.id)
-				console.log(`${forumIndex} - ${commentIndex}`)
-				console.log(forumData[forumIndex].comments[commentIndex])
 				return forumData[forumIndex].comments[commentIndex]
 			}
 		}

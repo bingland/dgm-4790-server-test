@@ -11,7 +11,7 @@ import DeleteConfirm from './components/DeleteConfirm/DeleteConfirm'
 
 const App = () => {
 
-  const [curId, setCurId] = useState('0000')
+  const [curId, setCurId] = useState('S90ovVFpkAmfgKZLG-PIW')
   // modal togglers
   const [showNewComment, setShowNewComment] = useState(false)
   const [showEditArea, setShowEditArea] = useState(false)
