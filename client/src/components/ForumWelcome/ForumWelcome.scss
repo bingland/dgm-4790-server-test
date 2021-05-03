@@ -1,14 +1,15 @@
 .ForumWelcome {
-  background-color: lightblue;
+  background-color: lighten(#4ecdc4, 20%);
   text-align: center;
-  padding: 20px;
+  padding: 60px 0;
 
   h1.forumName {
-    font-size: 25px;
+    font-size: 35px;
     font-weight: bold;
   }
   p {
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: 18px;
+    line-height: 1.5;
   }
 }

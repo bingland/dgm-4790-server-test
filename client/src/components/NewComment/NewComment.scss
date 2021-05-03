@@ -1,3 +1,8 @@
+@keyframes fadeInOpacity {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 .newCommentBackground {
   position: fixed;
   top: 0;
@@ -6,25 +11,34 @@
   background-color: rgba(0, 0, 0, 0.301);
   display: grid;
   place-items: center;
+  z-index: 999;
 
   .NewComment {
-    background-color: lightgreen;
-    width: 300px;
-    height: 300px;
-    border-radius: 10px;
-    padding: 10px;
+    background-color: #f7fff7;
+    width: 500px;
+    border-radius: 5px;
+    padding: 20px 40px;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.178);
+
+    /* animation */
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 0.2s;
 
     h1 {
       font-size: 20px;
       font-weight: bold;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
     }
 
     input[type="text"], textarea {
-      padding: 5px;
+      padding: 8px;
       border-radius: 5px;
       border: 1px solid rgb(221, 221, 221);
       margin-top: 5px;
+      width: 100%;
     }
 
     textarea {
@@ -33,11 +47,11 @@
     }
 
     p {
-      margin-top: 5px;
+      margin: 10px 0;
     }
 
     select {
-      padding: 5px;
+      padding: 8px;
       border-radius: 5px;
       border: 1px solid rgb(221, 221, 221);
       margin-top: 5px;
@@ -45,7 +59,7 @@
     }
 
     button {
-      margin-top: 5px;
+      margin-top: 10px;
     }
   }
 }

@@ -28,14 +28,14 @@ const DeleteConfirm = props => {
     })
 
     return (
-      <button onClick={() => {
+      <button className="delBtn" onClick={() => {
         deleteComment({ 
           variables: {
             id: props.currentCommentId
           } 
         })
         props.toggleDeleteConfirm()
-      }}>Submit</button>
+      }}>Delete</button>
     )
   }
 
