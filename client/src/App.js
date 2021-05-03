@@ -101,7 +101,7 @@ const App = () => {
         />
       )}
 
-      <Header setCurId={setCurId} toggleNewComment={toggleNewComment}/>
+      <Header setCurId={setCurId} curId={curId} toggleNewComment={toggleNewComment}/>
       <GetForumData/>
     </div>
   )

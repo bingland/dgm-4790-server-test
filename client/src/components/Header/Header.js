@@ -1,6 +1,7 @@
 import './Header.scss'
 import { useQuery, gql } from '@apollo/client'
 import React from 'react'
+import { customRandom } from 'nanoid'
 
 const Header = props => {
 
@@ -27,7 +28,7 @@ const Header = props => {
     return (
       <React.Fragment>
         {data.forums.map((forum, index) => (
-          <div className="forumLink" onClick={setPage} data-id={forum.id} key={index}>{forum.name}</div>
+          <div className={forum.id === props.curId ? "forumLink active" : "forumLink"} onClick={setPage} data-id={forum.id} key={index}>{forum.name}</div>
         ))}
       </React.Fragment>
     )
@@ -35,8 +36,10 @@ const Header = props => {
 
   return (
     <div className="Header">
-      Forum site. Forums:
-      <GetForums />
+      <div className="alignLeft">
+        <div className="logoText">Forum Site</div>
+        <GetForums />
+      </div>
       <button className="newCommentBtn"  onClick={props.toggleNewComment}>New Comment</button>
     </div>
   )
